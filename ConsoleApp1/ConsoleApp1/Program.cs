@@ -77,6 +77,7 @@ namespace ConsoleApp1
                     }
                     if (File.Exists(Directory.GetCurrentDirectory() + @"\" + "Adventurer.txt"))
                     {
+                        Console.Clear();
                         optn1.optn = 2;
                         optn1.Made();
                     }
