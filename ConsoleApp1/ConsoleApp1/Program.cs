@@ -49,7 +49,7 @@ namespace ConsoleApp1
                                 optn1.optn = 1;
                                 optn1.Health = 100;
                                 optn1.Stamina = 50;
-                                optn1.Hunger = 25;
+                                optn1.Hunger = 10;
                                 optn1.CrntChptr = 1;
                                 optn1.Made();
                                 enter1.Enter();
@@ -72,7 +72,7 @@ namespace ConsoleApp1
                     optn1.optn = 1;
                     optn1.Health = 100;
                     optn1.Stamina = 50;
-                    optn1.Hunger = 25;
+                    optn1.Hunger = 10;
                     optn1.CrntChptr = 1;
                     optn1.Made();
                 }
