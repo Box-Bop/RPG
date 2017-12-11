@@ -15,13 +15,15 @@ namespace ConsoleApp1
             while (menu == true)
             {
                 var optn1 = new MenuDec();
-                Console.ForegroundColor = ConsoleColor.Cyan;
+                var enter1 = new Game();
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Black;
                 // System.Threading.Thread.Sleep(5000);  <--- text delay
                 // Player stats: health, stamina, hunger.
                 // Possible roles: Rogue, Wizard, Monk, Barbarian, Ranger
                 Console.WriteLine("---WELCOME---\n\n");
                 Console.ResetColor();
-                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("1| NEW GAME\n\n2| LOAD GAME\n\n3| EXIT");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nTHIS GAME DOES NOT SUPPORT MULTIPLE SAVES!\n");
@@ -44,7 +46,13 @@ namespace ConsoleApp1
                             if (confirm == "1")
                             {
                                 newGameLoop = false;
+                                optn1.optn = 1;
+                                optn1.Health = 100;
+                                optn1.Stamina = 50;
+                                optn1.Hunger = 25;
+                                optn1.CrntChptr = 1;
                                 optn1.Made();
+                                enter1.Enter();
                             }
                             if (confirm == "2")
                             {
@@ -80,7 +88,7 @@ namespace ConsoleApp1
                     {
                         Console.Clear();
                         optn1.optn = 2;
-                        optn1.Made();
+                        enter1.Enter();
                     }
                 }
                 if (option1 == "3")

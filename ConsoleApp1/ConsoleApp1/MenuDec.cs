@@ -18,7 +18,8 @@ namespace ConsoleApp1
         public void Made()
         {
             string fullPath = filePath + "\\" + "Adventurer.txt";
-            File.Create(filePath + "Adventurer.txt");
+            using (var stream = File.Open(fullPath, FileMode.Create))
+            { }
 
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(fullPath, true))
             {

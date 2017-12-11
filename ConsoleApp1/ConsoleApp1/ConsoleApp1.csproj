@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrntProgress.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="MenuDec.cs" />
     <Compile Include="Program.cs" />
