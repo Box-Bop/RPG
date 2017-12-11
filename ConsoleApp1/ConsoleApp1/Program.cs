@@ -18,6 +18,7 @@ namespace ConsoleApp1
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 // System.Threading.Thread.Sleep(5000);  <--- text delay
                 // Player stats: health, stamina, hunger.
+                // Possible roles: Rogue, Wizard, Monk, Barbarian, Ranger
                 Console.WriteLine("---WELCOME---\n\n");
                 Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.DarkGray;
