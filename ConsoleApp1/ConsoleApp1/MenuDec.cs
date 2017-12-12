@@ -14,6 +14,7 @@ namespace ConsoleApp1
         public int Stamina { get; set; }
         public int Hunger { get; set; }
         public int CrntChptr { get; set; }
+        public int ChrctrClass { get; set; }
         public string filePath = Directory.GetCurrentDirectory();
         public void Made()
         {
@@ -30,9 +31,12 @@ namespace ConsoleApp1
                 file.WriteLine(Stamina);
                 // line 4
                 file.WriteLine(Hunger);
-                // line 6
                 file.WriteLine("Current chapter: ");
+                // line 6
                 file.WriteLine(CrntChptr);
+                file.WriteLine("Class: ");
+                //line 8
+                file.WriteLine(ChrctrClass);
             }
 
 

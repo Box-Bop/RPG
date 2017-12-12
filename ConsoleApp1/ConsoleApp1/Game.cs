@@ -17,6 +17,7 @@ namespace ConsoleApp1
             character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First());
             character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First());
             character.CrntChptr = Convert.ToInt16(File.ReadLines(fullPath).Skip(5).Take(1).First());
+            character.ChrctrClass = Convert.ToInt16(File.ReadLines(fullPath).Skip(7).Take(1).First());
             // ---BATTLE SITUATION---
             //Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + "CURRENT STATS:\n", Console.BackgroundColor = ConsoleColor.Cyan, Console.ForegroundColor = ConsoleColor.Black);
             //Console.WriteLine("Health: " + character.Health, Console.BackgroundColor = ConsoleColor.Black, Console.ForegroundColor = ConsoleColor.Red);
@@ -68,7 +69,7 @@ namespace ConsoleApp1
                     if (dec1 != "1" && dec1 != "2")
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Invalid option.");
+                        Console.WriteLine("Invalid option.\n");
                         Console.ResetColor();
                     }
                     Console.WriteLine("You begin to think of the situation you're in; no memory of the \npast few nights, and you're in this random house with an old lady.");
@@ -78,7 +79,7 @@ namespace ConsoleApp1
                     bool questi3 = true;
                     int quest1amnt = 0;
                     bool questi1bon = false;
-                    while (quest1amnt <= 3)
+                    while (quest1amnt < 3)
                     {
                         if (questi1 == true)
                         {
@@ -97,6 +98,7 @@ namespace ConsoleApp1
                             Console.ResetColor();
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("4| Where's this town located that you mentioned?");
+                            Console.ResetColor();
                         }
                         string quest1ans = Console.ReadLine();
                         if (quest1ans == "1" && questi1 == true)
@@ -104,39 +106,62 @@ namespace ConsoleApp1
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\n\"How did I end up here?\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Console.WriteLine("\"Well, I was coming back from the nearest with my groceries, and I stumbled upon you.\nYou were lying on the cold hard ground. I tried to wake you \nup on the spot, but you weren't reacting at all. So I decided to \ntake you and nurse you.\"");
+                            Console.WriteLine("\"Well, I was coming back from the nearest with my groceries, and I stumbled upon you.\nYou were lying on the cold hard ground. I tried to wake you \nup on the spot, but you weren't reacting at all. So I decided to \ntake you and nurse you.\"\n");
                             Console.ResetColor();
                             questi1bon = true;
                             quest1amnt += 1;
+                            questi1 = false;
                         }
                         if (quest1ans == "2" && questi2 == true)
                         {
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("\n\"Who are you?\"");
+                            Console.WriteLine("\n\"Who are you?\"\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Console.WriteLine("\"Well, people have different opinions on who I am, \"");
+                            Console.WriteLine("\"Well, people have different opinions on who I am, but to most I'm just a lady out in these woods.\nI sell flowers for a living.\"\n");
+                            Console.ResetColor();
+                            quest1amnt += 1;
+                            questi2 = false;
                         }
                         if (quest1ans == "3" && questi3 == true)
                         {
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("\n\"Where am I?\"");
-
+                            Console.WriteLine("\n\"Where am I?\"\n");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("\"You're in my house of course! And we're located in the middle of this forest.\"\n");
+                            quest1amnt += 1;
+                            questi3 = false;
                         }
                         if (quest1ans == "4" && questi1bon == true)
                         {
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("\"Where's this town located that you mentioned?\n");
+                            Console.WriteLine("\"Where's this town located that you mentioned?\"\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.WriteLine("\"Oh that? It's to the east of the front door when you walk out. It'll take you quite \nsome time to get there if you're traveling by foot.\nI'd say around 2 hours.\"");
                             Console.ResetColor();
+                            quest1amnt += 1;
+                            questi1bon = false;
                         }
                         if (quest1ans != "1" && quest1ans != "2" && quest1ans != "3" && quest1ans != "4")
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Invalid option.");
+                            Console.WriteLine("Invalid option.\n");
                             Console.ResetColor();
                         }
                     }
+                    Console.ResetColor();
+                    Console.WriteLine("\nBefore you manage to ask another question, the lady interrupts you.");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("\"I don't feel like answering any more of your questions, they're futile.\nNow, could you follow me outside?\"\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("\"I want to wash my face first.\"");
+                    Console.ResetColor();
+                    Console.Write(" You say, as you look for a bathroom.");
+                    Console.WriteLine("The lady points at the bathroom, \nyou enter it, and close the door behind you.");
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine("\nPress Enter to continue.");
+                    Console.ResetColor();
+                    Console.ReadLine();
+
                 }
             }
 

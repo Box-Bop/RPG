@@ -52,6 +52,7 @@ namespace ConsoleApp1
                                 optn1.Stamina = 50;
                                 optn1.Hunger = 10;
                                 optn1.CrntChptr = 1;
+                                optn1.ChrctrClass = 0;
                                 optn1.Made();
                                 enter1.Enter();
                             }
@@ -75,6 +76,7 @@ namespace ConsoleApp1
                     optn1.Stamina = 50;
                     optn1.Hunger = 10;
                     optn1.CrntChptr = 1;
+                    optn1.ChrctrClass = 0;
                     optn1.Made();
                 }
                 if (option1 == "2")

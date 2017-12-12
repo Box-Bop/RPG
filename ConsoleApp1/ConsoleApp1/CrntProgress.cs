@@ -14,7 +14,6 @@ namespace ConsoleApp1
         public int Stamina { get; set; }
         public int Hunger { get; set; }
         public int CrntChptr { get; set; }
-
-
+        public int ChrctrClass { get; set; }
     }
 }
