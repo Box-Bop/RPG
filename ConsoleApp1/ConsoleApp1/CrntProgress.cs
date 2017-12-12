@@ -15,5 +15,12 @@ namespace ConsoleApp1
         public int Hunger { get; set; }
         public int CrntChptr { get; set; }
         public int ChrctrClass { get; set; }
+
+        public void Save()
+        {
+
+
+
+        }
     }
 }

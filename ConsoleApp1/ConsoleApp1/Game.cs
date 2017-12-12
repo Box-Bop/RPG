@@ -128,6 +128,7 @@ namespace ConsoleApp1
                             Console.WriteLine("\n\"Where am I?\"\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.WriteLine("\"You're in my house of course! And we're located in the middle of this forest.\"\n");
+                            Console.ResetColor();
                             quest1amnt += 1;
                             questi3 = false;
                         }
@@ -157,11 +158,26 @@ namespace ConsoleApp1
                     Console.ResetColor();
                     Console.Write(" You say, as you look for a bathroom.");
                     Console.WriteLine("The lady points at the bathroom, \nyou enter it, and close the door behind you.");
+                    Console.WriteLine("You look into the mirror...");
                     Console.ForegroundColor = ConsoleColor.DarkGray;
                     Console.WriteLine("\nPress Enter to continue.");
                     Console.ResetColor();
                     Console.ReadLine();
-
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("---CLASS SELECTION---");
+                    Console.ResetColor();
+                    Console.WriteLine("\n\n\nYou don't quite recognize your own face, but since it's staring \nright back at you, you quickly accept how you look.\nYOU'RE A: \n");
+                    // Possible roles: Rogue, Wizard, Monk, Barbarian, Ranger
+                    Console.WriteLine("1| Rogue - A sneaky person with lightweight armour and daggers. Your sleight of hand \nwill allow you to pickpocket most creatures, and unlock even the toughest of locks.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("2| Wizard - Most creatures fear of what you're capable of. The magic, and the illusions that you can perform can fool even other wizards.");
+                    Console.ResetColor();
+                    Console.WriteLine("3| Monk - Your magical chants can provide you with temporary physical improvements, and can also debuff your enemies.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("4| Barbarian - Noone can escape the swings of your mighty war axe. Your war axe can be slammed against the ground to create a shockwave, that can knock enemies back.");
+                    Console.ResetColor();
+                    Console.WriteLine("5| Ranger - ");
                 }
             }
 
