@@ -43,7 +43,10 @@ namespace ConsoleApp1
                 Console.ResetColor();
                 Console.WriteLine("You hear this as you're slowly gaining back conciousness. Another dead body?\nYou jerk up, coughing, noticing that you were lying on a bed.");
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("Awh, thank goodness");
+                Console.WriteLine("Awh, thank goodness, you're awake. Hold on a second.");
+                Console.ResetColor();
+                Console.WriteLine("Before you can even speak a word, the mysterious woman offers you soup.\n\nYour current hunger is at 10 (max: 25)\nWill you accept her offer?");
+                Console.ReadLine();
             }
 
 
