@@ -45,6 +45,7 @@ namespace ConsoleApp1
                             string confirm = Console.ReadLine();
                             if (confirm == "1")
                             {
+                                Console.Clear();
                                 newGameLoop = false;
                                 optn1.optn = 1;
                                 optn1.Health = 100;
