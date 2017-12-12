@@ -106,7 +106,7 @@ namespace ConsoleApp1
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\n\"How did I end up here?\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Console.WriteLine("\"Well, I was coming back from the nearest with my groceries, and I stumbled upon you.\nYou were lying on the cold hard ground. I tried to wake you \nup on the spot, but you weren't reacting at all. So I decided to \ntake you and nurse you.\"\n");
+                            Console.WriteLine("\"Well, I was coming back from the nearest town with my groceries, and I stumbled upon you.\nYou were just lying there, on the ground. I tried to wake you \nup on the spot, but you weren't reacting at all. So I decided to \ntake you and nurse you.\"\n");
                             Console.ResetColor();
                             questi1bon = true;
                             quest1amnt += 1;
@@ -157,7 +157,7 @@ namespace ConsoleApp1
                     Console.Write("\"I want to wash my face first.\"");
                     Console.ResetColor();
                     Console.Write(" You say, as you look for a bathroom.");
-                    Console.WriteLine("The lady points at the bathroom, \nyou enter it, and close the door behind you.");
+                    Console.WriteLine(" The lady points at the bathroom, \nyou enter it, and close the door behind you.");
                     Console.WriteLine("You look into the mirror...");
                     Console.ForegroundColor = ConsoleColor.DarkGray;
                     Console.WriteLine("\nPress Enter to continue.");
@@ -167,17 +167,103 @@ namespace ConsoleApp1
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("---CLASS SELECTION---");
                     Console.ResetColor();
-                    Console.WriteLine("\n\n\nYou don't quite recognize your own face, but since it's staring \nright back at you, you quickly accept how you look.\nYOU'RE A: \n");
-                    // Possible roles: Rogue, Wizard, Monk, Barbarian, Ranger
-                    Console.WriteLine("1| Rogue - A sneaky person with lightweight armour and daggers. Your sleight of hand \nwill allow you to pickpocket most creatures, and unlock even the toughest of locks.");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("2| Wizard - Most creatures fear of what you're capable of. The magic, and the illusions that you can perform can fool even other wizards.");
-                    Console.ResetColor();
-                    Console.WriteLine("3| Monk - Your magical chants can provide you with temporary physical improvements, and can also debuff your enemies.");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("4| Barbarian - Noone can escape the swings of your mighty war axe. Your war axe can be slammed against the ground to create a shockwave, that can knock enemies back.");
-                    Console.ResetColor();
-                    Console.WriteLine("5| Ranger - ");
+                    bool classselection = true;
+                    while (classselection == true)
+                    {
+                        Console.WriteLine("\n\n\nYou don't quite recognize your own face, but since it's staring \nright back at you, you quickly accept how you look.\nYOU'RE A: \n");
+                        Console.WriteLine("1| Rogue - A sneaky person with lightweight armour and daggers. Your sleight of hand \nwill allow you to pickpocket most creatures, and unlock even the toughest of locks.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("2| Wizard - Most creatures fear of what you're capable of. The magic, and the illusions\nthat you can perform can fool even other wizards.\n");
+                        Console.ResetColor();
+                        Console.WriteLine("3| Monk - Your magical chants can provide you with temporary physical\nimprovements, and can also debuff your enemies.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("4| Barbarian - Noone can escape the swings of your mighty war axe.\nYour war axe can be slammed against the ground to create a shockwave, that can knock enemies back.\n");
+                        Console.ResetColor();
+                        Console.WriteLine("5| Ranger - Have an enemy that is far away? No problem. Your trusty bow and arrow can\nallow you to target enemies near and far. Your survival skills let you survive any harsh weather condition.\n");
+                        Console.WriteLine("Which class will you choose?");
+                        string cclass = Console.ReadLine();
+                        if (cclass == "1")
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\n\"Rogue\"");
+                            Console.ResetColor();
+                            Console.Write(" You mutter to yourself. It's quite obvious that you're a rogue, the lack of heavy armour, your sweet hoodie.\nSeems that a dagger and some pickpocketing tools are in your pocket. They'll come in handy. ");
+                            character.ChrctrClass = 1;
+                            classselection = false;
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            Console.WriteLine("\nPress Enter to continue.");
+                            Console.ResetColor();
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                        if (cclass == "2")
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\n\"I'm a Wizard\"");
+                            Console.ResetColor();
+                            Console.Write(" You mutter to yourself. By your appearance, it's quite obvious that you're a wizard.\nThe blue robe, the slacky hood, your trusty staff. It all screams wizard...");
+                            character.ChrctrClass = 2;
+                            classselection = false;
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            Console.WriteLine("\nPress Enter to continue.");
+                            Console.ResetColor();
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                        if (cclass == "3")
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\n\"Monk\"");
+                            Console.ResetColor();
+                            Console.Write(" You mutter to yourself. It's quite obvious that you're a monk, judging by\nthe looks. Slacky clother, yet they're clean. The long hair...");
+                            classselection = false;
+                            Console.WriteLine(character.ChrctrClass);
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            Console.WriteLine("\nPress Enter to continue.");
+                            Console.ResetColor();
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                        if (cclass == "4")
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\n\"Barbarian\"");
+                            Console.ResetColor();
+                            Console.Write(" You mutter to yourself. Judging by the looks, it all screams barbarian. The heavy war axe\nthat is on your back, the body of a weightlifter. Can't believe that the old lady was able to get me inside her home.");
+                            character.ChrctrClass = 4;
+                            classselection = false;
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            Console.WriteLine("\nPress Enter to continue.");
+                            Console.ResetColor();
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                        if (cclass == "5")
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write("\n\"Ranger\"");
+                            Console.ResetColor();
+                            Console.Write(" You mutter to yourself. It's quite obvious that you're a ranger. The longbow that is holstered on your back,\nyour trusty pointy arrows resting besides them. It all screams ranger.");
+                            character.ChrctrClass = 5;
+                            classselection = false;
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            Console.WriteLine("\nPress Enter to continue.");
+                            Console.ResetColor();
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                        if (cclass != "1" && cclass != "2" && cclass != "3" && cclass != "4" && cclass != "5")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nInvalid option.");
+                            Console.ResetColor();
+                        }
+                    }
                 }
             }
 
