@@ -16,12 +16,10 @@ namespace ConsoleApp1
             {
                 var optn1 = new MenuDec();
                 var enter1 = new Game();
-                Console.BackgroundColor = ConsoleColor.Yellow;
-                Console.ForegroundColor = ConsoleColor.Black;
                 // System.Threading.Thread.Sleep(5000);  <--- text delay
                 // Player stats: health, stamina, hunger.
                 // Possible roles: Rogue, Wizard, Monk, Barbarian, Ranger
-                Console.WriteLine("---WELCOME---\n\n");
+                Console.WriteLine("---WELCOME---\n\n", Console.BackgroundColor = ConsoleColor.Yellow, Console.ForegroundColor = ConsoleColor.Black);
                 Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("1| NEW GAME\n\n2| LOAD GAME\n\n3| EXIT");

@@ -19,6 +19,7 @@ namespace ConsoleApp1
             character.CrntChptr = Convert.ToInt16(File.ReadLines(fullPath).Skip(5).Take(1).First());
             character.ChrctrClass = Convert.ToInt16(File.ReadLines(fullPath).Skip(7).Take(1).First());
             // ---BATTLE SITUATION---
+            //Console.WriteLine("---BATTLE---", Console.BackgroundColor = ConsoleColor.Green);
             //Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + "CURRENT STATS:\n", Console.BackgroundColor = ConsoleColor.Cyan, Console.ForegroundColor = ConsoleColor.Black);
             //Console.WriteLine("Health: " + character.Health, Console.BackgroundColor = ConsoleColor.Black, Console.ForegroundColor = ConsoleColor.Red);
             //Console.WriteLine("Stamina: " + character.Stamina, Console.BackgroundColor = ConsoleColor.Black, Console.ForegroundColor = ConsoleColor.Blue);
@@ -79,6 +80,7 @@ namespace ConsoleApp1
                     bool questi3 = true;
                     int quest1amnt = 0;
                     bool questi1bon = false;
+                    bool questi1add = false;
                     while (quest1amnt < 3)
                     {
                         if (questi1 == true)
@@ -141,6 +143,7 @@ namespace ConsoleApp1
                             Console.ResetColor();
                             quest1amnt += 1;
                             questi1bon = false;
+                            questi1add = true;
                         }
                         if (quest1ans != "1" && quest1ans != "2" && quest1ans != "3" && quest1ans != "4")
                         {
@@ -264,6 +267,104 @@ namespace ConsoleApp1
                             Console.ResetColor();
                         }
                     }
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("\"Hurry!\"\n");
+                    Console.ResetColor();
+                    Console.Write(" You hear, as you wash your face.");
+                    Console.WriteLine(" You both walk outside. ");
+                    bool repeat = true;
+
+                        while (repeat == true)
+                        {
+                            Console.Write("As you do, you immediately look: \n\n1| West\n2| East\n3| North\n");
+                            bool questi1dir = false;
+                            string test = Console.ReadLine();
+                            if (test == "2")
+                            {
+                                if (questi1add == true)
+                                {
+                                Console.WriteLine("Through the thick forest, you can make out some buildings, they truly are far away, just like the lady had said.");
+                                questi1dir = true;
+                                repeat = false;
+                                }
+                                else
+                                {
+                                Console.WriteLine("That side of the forest looks to be a little brighter than the rest, you don't know why...");
+                                repeat = false;
+                                }
+                            }
+                            
+                            if (test == "1" || test == "3")
+                            {
+                                    Console.WriteLine("\nYou don't quite see anything special, just a lot of forest.");
+                                    repeat = false;
+                            }
+                            if (test != "1" && test != "2" && test != "3")
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\nInvalid option.");
+                                Console.ResetColor();
+                            }
+
+                        }
+                    Console.WriteLine("The lady walks you to a house that isn't quite far from the house that you were just in.");
+                    Console.WriteLine("The house looks half-built, and a lot larger than the house you woke up in.\n");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("\"This is the house that I'm working on, it'll be a great \nupgrade from my old shack. It's perfectly made for two people aswell. \"\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\"Really? Who's going to be the second person occupying this \nlovely house?\"\n");
+                    Console.ResetColor();
+                    Console.Write("You ask, as the lady turns to look at you.\n\n");
+                    Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Write("\"It's ");
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.Write("gOI");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.Write("NG TO B");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("E YOU!\"");
+                    Console.ResetColor();
+                    string chrctrWeapon = null;
+                    if (character.ChrctrClass == 1)
+                    {
+                        chrctrWeapon = "daggers";
+                    }
+                    if (character.ChrctrClass == 2)
+                    {
+                        chrctrWeapon = "magic staff";
+                    }
+                    if (character.ChrctrClass == 3)
+                    {
+                        chrctrWeapon = "body for combat";
+                    }
+                    if (character.ChrctrClass == 4)
+                    {
+                        chrctrWeapon = "war axe";
+                    }
+                    if (character.ChrctrClass == 5)
+                    {
+                        chrctrWeapon = "bow and arrow";
+                    }
+                    Console.WriteLine("\nYou see the lady turning into a creature, some sort of bear-human hybrid.\nYou stand back, and prepare your {0}.", chrctrWeapon);
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine("\nPress Enter to continue.");
+                    Console.ResetColor();
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                    Console.ResetColor();
+                    Console.WriteLine("Because of element of surprise, the creature gets a hit on you.");
+                    Console.Write("It deals");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(" 8 ");
+                    Console.ResetColor();
+                    Console.Write("damage.");
+                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - 8;
+                    Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + "CURRENT STATS:\n", Console.BackgroundColor = ConsoleColor.Cyan, Console.ForegroundColor = ConsoleColor.Black);
+                    Console.WriteLine("Health: " +  character.Health, Console.BackgroundColor = ConsoleColor.Black, Console.ForegroundColor = ConsoleColor.Red);
+                    Console.WriteLine("Stamina: " + character.Stamina, Console.BackgroundColor = ConsoleColor.Black, Console.ForegroundColor = ConsoleColor.Blue);
+                    Console.WriteLine("Hunger: " + character.Hunger, Console.BackgroundColor = ConsoleColor.Black, Console.ForegroundColor = ConsoleColor.DarkYellow);
                 }
             }
 
