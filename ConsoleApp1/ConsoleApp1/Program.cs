@@ -104,8 +104,6 @@ namespace ConsoleApp1
                     Console.ResetColor();
                 }
             }
-
-
             Console.ReadKey();
         }
     }

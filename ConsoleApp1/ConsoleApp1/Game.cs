@@ -223,7 +223,7 @@ namespace ConsoleApp1
                             Console.ResetColor();
                             Console.Write(" You mutter to yourself. It's quite obvious that you're a monk, judging by\nthe looks. Slacky clother, yet they're clean. The long hair...");
                             classselection = false;
-                            Console.WriteLine(character.ChrctrClass);
+                            character.ChrctrClass = 3;
                             Console.ForegroundColor = ConsoleColor.DarkGray;
                             Console.WriteLine("\nPress Enter to continue.");
                             Console.ResetColor();
@@ -357,14 +357,37 @@ namespace ConsoleApp1
                     Console.WriteLine("Because of element of surprise, the creature gets a hit on you.");
                     Console.Write("It deals");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write(" 8 ");
+                    Console.Write(" 12 ");
                     Console.ResetColor();
-                    Console.Write("damage.");
-                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - 8;
-                    Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + "CURRENT STATS:\n", Console.BackgroundColor = ConsoleColor.Cyan, Console.ForegroundColor = ConsoleColor.Black);
-                    Console.WriteLine("Health: " +  character.Health, Console.BackgroundColor = ConsoleColor.Black, Console.ForegroundColor = ConsoleColor.Red);
-                    Console.WriteLine("Stamina: " + character.Stamina, Console.BackgroundColor = ConsoleColor.Black, Console.ForegroundColor = ConsoleColor.Blue);
-                    Console.WriteLine("Hunger: " + character.Hunger, Console.BackgroundColor = ConsoleColor.Black, Console.ForegroundColor = ConsoleColor.DarkYellow);
+                    Console.Write("damage.\n");
+                    int ldyhlth = 25;
+                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - 12;
+                    string attck2 = "2| Punch it with your hands.";
+                    string attck3 = "3| Run away.";
+                    // Classes: Rogue (1), Wizard (2), Monk (3), Barbarian (4), Ranger (5)
+                    if (character.ChrctrClass == 1)
+                    {
+                        Console.WriteLine("1| Run towards it and stab it with your daggers.\n{0}\n{1}", attck2, attck3);
+                        character.Stats();
+                    }
+                    if (character.ChrctrClass == 2)
+                    {
+                        Console.WriteLine("1| Attack it with a lightning bolt spell.\n{0}\n{1}", attck2, attck3);
+                    }
+                    if (ChrctrClass == 3)
+                    {
+                        Console.WriteLine("1| Enrage yourself.\n{0}\n{1}", attck2,attck3);
+                    }
+                    if (ChrctrClass == 4)
+                    {
+                        Console.WriteLine("1| Slash your war axe at it.\n{0}\n{1}", attck2,attck3);
+                    }
+                    if (ChrctrClass == 5)
+                    {
+                        Console.WriteLine("1| Shoot it with your bow.\n{0}\n{1}", attck2,attck3);
+                    }
+
+
                 }
             }
 
