@@ -514,59 +514,588 @@ namespace ConsoleApp1
                         }
                         if (character.ChrctrClass == 2)
                         {
-                            Console.WriteLine("1| Attack it with a lightning bolt spell.\n{0}\n{1}", attck2, attck3);
-                            character.Stats();
-                            string bttlactn = Console.ReadLine();
-                            if (bttlactn == "1")
-                            { }
-                            if (bttlactn == "2")
-                            { }
-                            if (bttlactn == "3")
-                            { }
+                            while (true)
+                            {
+                                Console.WriteLine("1| Attack it with a lightning bolt spell.\n{0}\n{1}", attck2, attck3);
+                                character.Stats();
+                                string bttlactn = Console.ReadLine();
+                                if (bttlactn == "1")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("");
+                                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                                    Console.ResetColor();
+                                    Console.Write("You mumble some magical words, and strike a powerful bolt at the creature.\nYou dealed ");
+                                    Console.Write(" 8 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to it.\n");
+                                    staminausd += 5;
+                                    hungerlst += 2;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    ldyhlth -= 8;
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        goto Ldywin;
+                                    }
+                                    Console.Write("The creature attacks back, and manages to deal");
+                                    Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to you.\n");
+                                    takendmg += 12;
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    if (character.Health < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You became too tired to battle on.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You can't fight with your stomach empty.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                }
+                                if (bttlactn == "2")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("");
+                                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                                    Console.ResetColor();
+                                    Console.Write("That wasn't quite effective, you only managed to deal ");
+                                    Console.Write(" 4 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to it.");
+                                    staminausd += 5;
+                                    hungerlst += 2;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    character.Save();
+                                    ldyhlth -= 4;
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        goto Ldywin;
+                                    }
+                                    Console.Write("The creature attacks back, and manages to deal");
+                                    Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to you.\n");
+                                    takendmg += 12;
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    character.Save();
+                                    if (character.Health < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You became too tired to battle on.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You can't fight with your stomach empty.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                }
+                                if (bttlactn == "3")
+                                {
+                                    staminausd += 12;
+                                    hungerlst += 7;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    character.Save();
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("In the hopes of escaping, you bacame too tired, and therefore, the creature manages to enslave you.");
+                                        Console.Write("\nGame over.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("In the hopes of escaping, you became too hungry to continue to live.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+
+                                        fairwin = false;
+                                        goto Ldywin;
+                                    }
+                                }
+                            }
+
                         }
                         if (ChrctrClass == 3)
                         {
-                            Console.WriteLine("1| Enrage yourself.\n{0}\n{1}", attck2, attck3);
-                            character.Stats();
-                            string bttlactn = Console.ReadLine();
-                            if (bttlactn == "1")
-                            { }
-                            if (bttlactn == "2")
-                            { }
-                            if (bttlactn == "3")
-                            { }
+                            while (true)
+                            {
+                                Console.WriteLine("1| Enrage yourself.\n{0}\n{1}", attck2, attck3);
+                                character.Stats();
+                                string bttlactn = Console.ReadLine();
+                                if (bttlactn == "1")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("");
+                                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                                    Console.ResetColor();
+                                    Console.Write("You quickly meditate on the spot, and have enlightened your spirit. You now do more melee damage.\nYou dealed ");
+                                    Console.Write(" 8 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to it, because it got triggered.\n");
+                                    staminausd += 5;
+                                    hungerlst += 2;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    ldyhlth -= 8;
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        goto Ldywin;
+                                    }
+                                    Console.Write("The creature attacks back, and manages to deal");
+                                    Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to you.\n");
+                                    takendmg += 12;
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    if (character.Health < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You became too tired to battle on.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You can't fight with your stomach empty.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                }
+                                if (bttlactn == "2")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("");
+                                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                                    Console.ResetColor();
+                                    Console.Write("It was very effective, you managed to do ");
+                                    Console.Write(" 11 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to it.");
+                                    staminausd += 5;
+                                    hungerlst += 2;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    character.Save();
+                                    ldyhlth -= 11;
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        goto Ldywin;
+                                    }
+                                    Console.Write("The creature attacks back, and manages to deal");
+                                    Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to you.\n");
+                                    takendmg += 12;
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    character.Save();
+                                    if (character.Health < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You became too tired to battle on.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You can't fight with your stomach empty.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                }
+                                if (bttlactn == "3")
+                                {
+                                    staminausd += 12;
+                                    hungerlst += 7;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    character.Save();
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("In the hopes of escaping, you bacame too tired, and therefore, the creature manages to enslave you.");
+                                        Console.Write("\nGame over.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("In the hopes of escaping, you became too hungry to continue to live.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+
+                                        fairwin = false;
+                                        goto Ldywin;
+                                    }
+                                }
+                            }
                         }
                         if (ChrctrClass == 4)
                         {
-                            Console.WriteLine("1| Slash your war axe at it.\n{0}\n{1}", attck2, attck3);
-                            character.Stats();
-                            string bttlactn = Console.ReadLine();
-                            if (bttlactn == "1")
-                            { }
-                            if (bttlactn == "2")
-                            { }
-                            if (bttlactn == "3")
-                            { }
+                            while (true)
+                            {
+                                Console.WriteLine("1| Slash your war axe at it.\n{0}\n{1}", attck2, attck3);
+                                character.Stats();
+                                string bttlactn = Console.ReadLine();
+                                if (bttlactn == "1")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("");
+                                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                                    Console.ResetColor();
+                                    Console.Write("You slam the creature with your mighty war axe.\nYou dealed ");
+                                    Console.Write(" 8 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to it.\n");
+                                    staminausd += 5;
+                                    hungerlst += 2;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    ldyhlth -= 8;
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        goto Ldywin;
+                                    }
+                                    Console.Write("The creature attacks back, and manages to deal");
+                                    Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to you.\n");
+                                    takendmg += 12;
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    if (character.Health < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You became too tired to battle on.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You can't fight with your stomach empty.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                }
+                                if (bttlactn == "2")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("");
+                                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                                    Console.ResetColor();
+                                    Console.Write("That wasn't quite effective, you only managed to deal ");
+                                    Console.Write(" 7 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to it.");
+                                    staminausd += 5;
+                                    hungerlst += 2;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    character.Save();
+                                    ldyhlth -= 7;
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        goto Ldywin;
+                                    }
+                                    Console.Write("The creature attacks back, and manages to deal");
+                                    Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to you.\n");
+                                    takendmg += 12;
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    character.Save();
+                                    if (character.Health < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You became too tired to battle on.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You can't fight with your stomach empty.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                }
+                                if (bttlactn == "3")
+                                {
+                                    staminausd += 12;
+                                    hungerlst += 7;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    character.Save();
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("In the hopes of escaping, you bacame too tired, and therefore, the creature manages to enslave you.");
+                                        Console.Write("\nGame over.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("In the hopes of escaping, you became too hungry to continue to live.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+
+                                        fairwin = false;
+                                        goto Ldywin;
+                                    }
+                                }
+                            }
                         }
                         if (ChrctrClass == 5)
                         {
-                            Console.WriteLine("1| Shoot it with your bow.\n{0}\n{1}", attck2, attck3);
-                            character.Stats();
-                            string bttlactn = Console.ReadLine();
-                            if (bttlactn == "1")
-                            { }
-                            if (bttlactn == "2")
-                            { }
-                            if (bttlactn == "3")
-                            { }
+                            
+                            while (true)
+                            {
+                                Console.WriteLine("1| Shoot it with your bow.\n{0}\n{1}", attck2, attck3);
+                                character.Stats();
+                                string bttlactn = Console.ReadLine();
+                                if (bttlactn == "1")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("");
+                                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                                    Console.ResetColor();
+                                    Console.Write("You shoot at it with god-like accuracy, you dealed ");
+                                    Console.Write(" 11 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to it.\n");
+                                    staminausd += 5;
+                                    hungerlst += 2;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    ldyhlth -= 11;
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        goto Ldywin;
+                                    }
+                                    Console.Write("The creature attacks back, and manages to deal");
+                                    Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to you.\n");
+                                    takendmg += 12;
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    if (character.Health < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You became too tired to battle on.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You can't fight with your stomach empty.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                }
+                                if (bttlactn == "2")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("");
+                                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                                    Console.ResetColor();
+                                    Console.Write("That wasn't quite effective, you only managed to deal ");
+                                    Console.Write(" 4 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to it.");
+                                    staminausd += 5;
+                                    hungerlst += 2;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    character.Save();
+                                    ldyhlth -= 4;
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        goto Ldywin;
+                                    }
+                                    Console.Write("The creature attacks back, and manages to deal");
+                                    Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to you.\n");
+                                    takendmg += 12;
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    character.Save();
+                                    if (character.Health < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You became too tired to battle on.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You can't fight with your stomach empty.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                }
+                                if (bttlactn == "3")
+                                {
+                                        fairwin = false;
+                                        goto Ldywin;
+                                  
+                                }
+                            }
                         }
                     }
                     Ldywin:;
-                    Console.WriteLine("Ldywin");
+                    Console.Clear();
+                    Console.ResetColor();
+                    if (fairwin == false)
+                    {
+                        Console.WriteLine("You escape successfully, even though the old lady turned into a \ncreature, it wasn't successful at catching you from escaping.");
+                        if (questi1add == true)
+                        {
+                            Console.WriteLine("You start walking towards the town that you saw.\nOnce you reach it, you see that it's quite a happy place for one to stay.\nAnd so you end up living there, a happy normal life.\n");
+                            Console.WriteLine("THE END", Console.ForegroundColor = ConsoleColor.DarkGray);
+                            Console.ReadLine();
+                            Environment.Exit(0);
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("You start walking. You walk for 12 hours, and you still see no end to this forest.\nYou stand still, look around, and then see a home far away. You start walking towards it.\nAfter about 10 min. you reach it. It's a small hut, made for 1 person. You know on the front door, noone answers, so you decide to open the door yourself and walk in.\nIt's empty, it doesn't seem that anyone lives in this home.\nOnce you make yourself at home, you realize that this place looks just like the old lady's home.\nBut it definitely isn't her home, her home had a larger home next to it, and this one didn't...");
+                            Console.WriteLine("THE END", Console.ForegroundColor = ConsoleColor.DarkGray);
+                            Console.ReadLine();
+                            Environment.Exit(0);
+                        }
+                    }
+                    if (fairwin == true)
+                    {
+                        Console.WriteLine("You've defeated the lady, and now are a proud owner of her homes.");
+                        if (questi1add == true)
+                        {
+                            Console.WriteLine("You live a happy life in that home, you travel to the nearest town every week to get food, and sometimes even hunt for wildlife around your area.");
+                            Console.WriteLine("THE END", Console.ForegroundColor = ConsoleColor.DarkGray);
+                            Console.ReadLine();
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Though sadly you don't have much food around to survive.\nHunting the wildlife doesn't give you infinite food.\nYour last hope was to get a farm and make grow your own food, but \nunfortunately the land in this forest is only suitable for trees, not crops.");
+                            Console.WriteLine("AFTER A FEW MONTHS, YOU DIE. THE END", Console.ForegroundColor = ConsoleColor.Red);
+                            Console.ReadLine();
+                            Environment.Exit(0);
+                        }
+                    }
                 }
             }
-
-
             Console.ReadLine();
         }
     }
