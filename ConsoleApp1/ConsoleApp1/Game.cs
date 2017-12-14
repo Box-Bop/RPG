@@ -352,42 +352,200 @@ namespace ConsoleApp1
                     Console.ResetColor();
                     Console.ReadLine();
                     Console.Clear();
-                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
-                    Console.ResetColor();
-                    Console.WriteLine("Because of element of surprise, the creature gets a hit on you.");
+                    Console.WriteLine("Because of the element of surprise, the creature gets a hit on you.");
                     Console.Write("It deals");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write(" 12 ");
                     Console.ResetColor();
-                    Console.Write("damage.\n");
+                    Console.Write("damage to you.\n");
                     int ldyhlth = 25;
                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - 12;
                     string attck2 = "2| Punch it with your hands.";
                     string attck3 = "3| Run away.";
-                    // Classes: Rogue (1), Wizard (2), Monk (3), Barbarian (4), Ranger (5)
-                    if (character.ChrctrClass == 1)
+                    bool battle = true;
+                    bool fairwin = false;
+                    while (battle == true)
                     {
-                        Console.WriteLine("1| Run towards it and stab it with your daggers.\n{0}\n{1}", attck2, attck3);
-                        character.Stats();
-                    }
-                    if (character.ChrctrClass == 2)
-                    {
-                        Console.WriteLine("1| Attack it with a lightning bolt spell.\n{0}\n{1}", attck2, attck3);
-                    }
-                    if (ChrctrClass == 3)
-                    {
-                        Console.WriteLine("1| Enrage yourself.\n{0}\n{1}", attck2,attck3);
-                    }
-                    if (ChrctrClass == 4)
-                    {
-                        Console.WriteLine("1| Slash your war axe at it.\n{0}\n{1}", attck2,attck3);
-                    }
-                    if (ChrctrClass == 5)
-                    {
-                        Console.WriteLine("1| Shoot it with your bow.\n{0}\n{1}", attck2,attck3);
-                    }
+                        // Classes: Rogue (1), Wizard (2), Monk (3), Barbarian (4), Ranger (5)
+                        if (character.ChrctrClass == 1)
+                        {
+                            while (true)
+                            {
+                                Console.WriteLine("1| Run towards it and stab it with your daggers.\n{0}\n{1}\n", attck2, attck3);
+                                character.Stats();
+                                string bttlactn = Console.ReadLine();
+                                if (bttlactn == "1")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("");
+                                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                                    Console.ResetColor();
+                                    Console.Write("You dash towards the creature, and stab it twice with your daggers.\nYou dealed ");
+                                    Console.Write(" 8 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to it.\n");
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - 5;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - 2;
+                                    ldyhlth -= 8;
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        goto Ldywin;
+                                    }
+                                    Console.Write("The creature attacks back, and manages to deal");
+                                    Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to you.");
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - 12;
+                                    if (character.Health < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You became too tired to battle on.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You can't fight with your stomach empty.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                }
+                                if (bttlactn == "2")
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("");
+                                    Console.WriteLine("---BATTLE---", Console.ForegroundColor = ConsoleColor.Green);
+                                    Console.ResetColor();
+                                    Console.Write("That wasn't quite effective, you only managed to deal ");
+                                    Console.Write(" 4 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.Write("damage to it.");
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - 5;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - 2;
+                                    ldyhlth -= 4;
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        goto Ldywin;
+                                    }
+                                    Console.Write("The creature attacks back, and manages to deal");
+                                    Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
+                                    Console.Write("damage to you.");
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - 12;
+                                    if (character.Health < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You became too tired to battle on.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("You can't fight with your stomach empty.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                }
+                                if (bttlactn == "3")
+                                {
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - 10;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - 7;
+                                    if (character.Stamina < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("In the hopes of escaping, you bacame too tired, and therefore, the creature manages to enslave you.");
+                                        Console.Write("\nGame over.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
+                                    }
+                                    if (character.Hunger < 1)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("In the hopes of escaping, you became too hungry to continue to live.");
+                                        Console.Write("\nGame over, you died.", Console.ForegroundColor = ConsoleColor.Red);
+                                        Console.ReadLine();
+                                        Environment.Exit(0);
 
-
+                                        fairwin = false;
+                                        goto Ldywin;
+                                    }
+                                }
+                            }
+                        }
+                        if (character.ChrctrClass == 2)
+                        {
+                            Console.WriteLine("1| Attack it with a lightning bolt spell.\n{0}\n{1}", attck2, attck3);
+                            character.Stats();
+                            string bttlactn = Console.ReadLine();
+                            if (bttlactn == "1")
+                            { }
+                            if (bttlactn == "2")
+                            { }
+                            if (bttlactn == "3")
+                            { }
+                        }
+                        if (ChrctrClass == 3)
+                        {
+                            Console.WriteLine("1| Enrage yourself.\n{0}\n{1}", attck2, attck3);
+                            character.Stats();
+                            string bttlactn = Console.ReadLine();
+                            if (bttlactn == "1")
+                            { }
+                            if (bttlactn == "2")
+                            { }
+                            if (bttlactn == "3")
+                            { }
+                        }
+                        if (ChrctrClass == 4)
+                        {
+                            Console.WriteLine("1| Slash your war axe at it.\n{0}\n{1}", attck2, attck3);
+                            character.Stats();
+                            string bttlactn = Console.ReadLine();
+                            if (bttlactn == "1")
+                            { }
+                            if (bttlactn == "2")
+                            { }
+                            if (bttlactn == "3")
+                            { }
+                        }
+                        if (ChrctrClass == 5)
+                        {
+                            Console.WriteLine("1| Shoot it with your bow.\n{0}\n{1}", attck2, attck3);
+                            character.Stats();
+                            string bttlactn = Console.ReadLine();
+                            if (bttlactn == "1")
+                            { }
+                            if (bttlactn == "2")
+                            { }
+                            if (bttlactn == "3")
+                            { }
+                        }
+                    }
+                    Ldywin:;
+                    Console.WriteLine("Ldywin");
                 }
             }
 
