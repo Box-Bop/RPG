@@ -29,7 +29,6 @@ namespace ConsoleApp1
             Console.WriteLine("---GAME INFO---\n");
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("\nThis game saves on a chapter basis, if you leave half way through, your progress will be lost. Though you may leave when a new chapter starts.");
             Console.WriteLine("\nThis is a text adventure role-playing game, options are limited as this is not a game with 3D graphics.\nEnjoy the game!");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("\nPress Enter to continue.");
@@ -365,6 +364,7 @@ namespace ConsoleApp1
                     int hungerlst = 0;
                     takendmg += 12;
                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                    takendmg = 0;
                     string attck2 = "2| Punch it with your hands.";
                     string attck3 = "3| Run away.";
                     bool battle = true;
@@ -404,6 +404,7 @@ namespace ConsoleApp1
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to you.\n");
+                                    takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     if (character.Health < 1)
@@ -456,6 +457,7 @@ namespace ConsoleApp1
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to you.\n");
+                                    takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     character.Save();
@@ -544,6 +546,7 @@ namespace ConsoleApp1
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to you.\n");
+                                    takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     if (character.Health < 1)
@@ -596,6 +599,7 @@ namespace ConsoleApp1
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to you.\n");
+                                    takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     character.Save();
@@ -653,7 +657,7 @@ namespace ConsoleApp1
                             }
 
                         }
-                        if (ChrctrClass == 3)
+                        if (character.ChrctrClass == 3)
                         {
                             while (true)
                             {
@@ -685,6 +689,7 @@ namespace ConsoleApp1
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to you.\n");
+                                    takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     if (character.Health < 1)
@@ -737,6 +742,7 @@ namespace ConsoleApp1
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to you.\n");
+                                    takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     character.Save();
@@ -793,7 +799,7 @@ namespace ConsoleApp1
                                 }
                             }
                         }
-                        if (ChrctrClass == 4)
+                        if (character.ChrctrClass == 4)
                         {
                             while (true)
                             {
@@ -825,6 +831,7 @@ namespace ConsoleApp1
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to you.\n");
+                                    takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     if (character.Health < 1)
@@ -877,6 +884,7 @@ namespace ConsoleApp1
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to you.\n");
+                                    takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     character.Save();
@@ -933,7 +941,7 @@ namespace ConsoleApp1
                                 }
                             }
                         }
-                        if (ChrctrClass == 5)
+                        if (character.ChrctrClass == 5)
                         {
                             
                             while (true)
@@ -966,6 +974,7 @@ namespace ConsoleApp1
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to you.\n");
+                                    takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     if (character.Health < 1)
@@ -1018,6 +1027,7 @@ namespace ConsoleApp1
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to you.\n");
+                                    takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     character.Save();
