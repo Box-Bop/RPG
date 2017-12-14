@@ -58,6 +58,7 @@ namespace ConsoleApp1
                         character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) + 11;
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine("You regained 11 hunger!");
+                        character.Save();
                         Console.ResetColor();
                         deci1 = false;
                         Console.WriteLine("You nod, and she proceeds to feed you her soup. It's barely warm, seems that she expected you to wake up earlier. \nThe taste of it isn't as bad as it smelled though, which is great.\nYou gesture the lady to stop feeding you, swallow the last bit of soup you had in your mouth.");
@@ -359,7 +360,11 @@ namespace ConsoleApp1
                     Console.ResetColor();
                     Console.Write("damage to you.\n");
                     int ldyhlth = 25;
-                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - 12;
+                    int takendmg = 0;
+                    int staminausd = 0;
+                    int hungerlst = 0;
+                    takendmg += 12;
+                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                     string attck2 = "2| Punch it with your hands.";
                     string attck3 = "3| Run away.";
                     bool battle = true;
@@ -384,8 +389,10 @@ namespace ConsoleApp1
                                     Console.Write(" 8 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
                                     Console.Write("damage to it.\n");
-                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - 5;
-                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - 2;
+                                    staminausd += 5;
+                                    hungerlst += 2;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     ldyhlth -= 8;
                                     if (ldyhlth < 1)
                                     {
@@ -396,8 +403,9 @@ namespace ConsoleApp1
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
-                                    Console.Write("damage to you.");
-                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - 12;
+                                    Console.Write("damage to you.\n");
+                                    takendmg += 12;
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -430,9 +438,13 @@ namespace ConsoleApp1
                                     Console.ResetColor();
                                     Console.Write("That wasn't quite effective, you only managed to deal ");
                                     Console.Write(" 4 ", Console.ForegroundColor = ConsoleColor.Red);
+                                    Console.ResetColor();
                                     Console.Write("damage to it.");
-                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - 5;
-                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - 2;
+                                    staminausd += 5;
+                                    hungerlst += 2;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    character.Save();
                                     ldyhlth -= 4;
                                     if (ldyhlth < 1)
                                     {
@@ -443,8 +455,10 @@ namespace ConsoleApp1
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
-                                    Console.Write("damage to you.");
-                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - 12;
+                                    Console.Write("damage to you.\n");
+                                    takendmg += 12;
+                                    character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    character.Save();
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -471,8 +485,11 @@ namespace ConsoleApp1
                                 }
                                 if (bttlactn == "3")
                                 {
-                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - 10;
-                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - 7;
+                                    staminausd += 12;
+                                    hungerlst += 7;
+                                    character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
+                                    character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
+                                    character.Save();
                                     if (character.Stamina < 1)
                                     {
                                         Console.Clear();
