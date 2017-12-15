@@ -277,14 +277,12 @@ namespace ConsoleApp1
                         while (repeat == true)
                         {
                             Console.Write("As you do, you immediately look: \n\n1| West\n2| East\n3| North\n");
-                            bool questi1dir = false;
                             string test = Console.ReadLine();
                             if (test == "2")
                             {
                                 if (questi1add == true)
                                 {
                                 Console.WriteLine("Through the thick forest, you can make out some buildings, they truly are far away, just like the lady had said.");
-                                questi1dir = true;
                                 repeat = false;
                                 }
                                 else
@@ -369,6 +367,7 @@ namespace ConsoleApp1
                     string attck3 = "3| Run away.";
                     bool battle = true;
                     bool fairwin = false;
+                    bool ldywin = true;
                     while (battle == true)
                     {
                         // Classes: Rogue (1), Wizard (2), Monk (3), Barbarian (4), Ranger (5)
@@ -394,12 +393,6 @@ namespace ConsoleApp1
                                     character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
                                     character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     ldyhlth -= 8;
-                                    if (ldyhlth < 1)
-                                    {
-                                        fairwin = true;
-                                        battle = false;
-                                        goto Ldywin;
-                                    }
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
@@ -407,6 +400,13 @@ namespace ConsoleApp1
                                     takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    character.Save();
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        break;
+                                    }
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -447,12 +447,6 @@ namespace ConsoleApp1
                                     character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     character.Save();
                                     ldyhlth -= 4;
-                                    if (ldyhlth < 1)
-                                    {
-                                        fairwin = true;
-                                        battle = false;
-                                        goto Ldywin;
-                                    }
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
@@ -461,6 +455,12 @@ namespace ConsoleApp1
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     character.Save();
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        break;
+                                    }
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -509,7 +509,6 @@ namespace ConsoleApp1
                                         Environment.Exit(0);
 
                                         fairwin = false;
-                                        goto Ldywin;
                                     }
                                 }
                             }
@@ -536,12 +535,6 @@ namespace ConsoleApp1
                                     character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
                                     character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     ldyhlth -= 8;
-                                    if (ldyhlth < 1)
-                                    {
-                                        fairwin = true;
-                                        battle = false;
-                                        goto Ldywin;
-                                    }
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
@@ -549,6 +542,13 @@ namespace ConsoleApp1
                                     takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    character.Save();
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        break;
+                                    }
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -589,12 +589,6 @@ namespace ConsoleApp1
                                     character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     character.Save();
                                     ldyhlth -= 4;
-                                    if (ldyhlth < 1)
-                                    {
-                                        fairwin = true;
-                                        battle = false;
-                                        goto Ldywin;
-                                    }
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
@@ -603,6 +597,12 @@ namespace ConsoleApp1
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     character.Save();
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        break;
+                                    }
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -651,7 +651,6 @@ namespace ConsoleApp1
                                         Environment.Exit(0);
 
                                         fairwin = false;
-                                        goto Ldywin;
                                     }
                                 }
                             }
@@ -679,12 +678,6 @@ namespace ConsoleApp1
                                     character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
                                     character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     ldyhlth -= 8;
-                                    if (ldyhlth < 1)
-                                    {
-                                        fairwin = true;
-                                        battle = false;
-                                        goto Ldywin;
-                                    }
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
@@ -692,6 +685,13 @@ namespace ConsoleApp1
                                     takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    character.Save();
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        break;
+                                    }
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -732,12 +732,6 @@ namespace ConsoleApp1
                                     character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     character.Save();
                                     ldyhlth -= 11;
-                                    if (ldyhlth < 1)
-                                    {
-                                        fairwin = true;
-                                        battle = false;
-                                        goto Ldywin;
-                                    }
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
@@ -746,6 +740,12 @@ namespace ConsoleApp1
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     character.Save();
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        break;
+                                    }
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -794,7 +794,6 @@ namespace ConsoleApp1
                                         Environment.Exit(0);
 
                                         fairwin = false;
-                                        goto Ldywin;
                                     }
                                 }
                             }
@@ -821,12 +820,6 @@ namespace ConsoleApp1
                                     character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
                                     character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     ldyhlth -= 8;
-                                    if (ldyhlth < 1)
-                                    {
-                                        fairwin = true;
-                                        battle = false;
-                                        goto Ldywin;
-                                    }
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
@@ -834,6 +827,13 @@ namespace ConsoleApp1
                                     takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    character.Save();
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        break;
+                                    }
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -874,12 +874,6 @@ namespace ConsoleApp1
                                     character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     character.Save();
                                     ldyhlth -= 7;
-                                    if (ldyhlth < 1)
-                                    {
-                                        fairwin = true;
-                                        battle = false;
-                                        goto Ldywin;
-                                    }
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
@@ -888,6 +882,12 @@ namespace ConsoleApp1
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     character.Save();
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        break;
+                                    }
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -936,7 +936,6 @@ namespace ConsoleApp1
                                         Environment.Exit(0);
 
                                         fairwin = false;
-                                        goto Ldywin;
                                     }
                                 }
                             }
@@ -964,12 +963,6 @@ namespace ConsoleApp1
                                     character.Stamina = Convert.ToInt16(File.ReadLines(fullPath).Skip(2).Take(1).First()) - staminausd;
                                     character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     ldyhlth -= 11;
-                                    if (ldyhlth < 1)
-                                    {
-                                        fairwin = true;
-                                        battle = false;
-                                        goto Ldywin;
-                                    }
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
@@ -977,6 +970,13 @@ namespace ConsoleApp1
                                     takendmg = 0;
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
+                                    character.Save();
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        break;
+                                    }
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -1017,12 +1017,6 @@ namespace ConsoleApp1
                                     character.Hunger = Convert.ToInt16(File.ReadLines(fullPath).Skip(3).Take(1).First()) - hungerlst;
                                     character.Save();
                                     ldyhlth -= 4;
-                                    if (ldyhlth < 1)
-                                    {
-                                        fairwin = true;
-                                        battle = false;
-                                        goto Ldywin;
-                                    }
                                     Console.Write("The creature attacks back, and manages to deal");
                                     Console.Write(" 12 ", Console.ForegroundColor = ConsoleColor.Red);
                                     Console.ResetColor();
@@ -1031,6 +1025,12 @@ namespace ConsoleApp1
                                     takendmg += 12;
                                     character.Health = Convert.ToInt16(File.ReadLines(fullPath).Skip(1).Take(1).First()) - takendmg;
                                     character.Save();
+                                    if (ldyhlth < 1)
+                                    {
+                                        fairwin = true;
+                                        battle = false;
+                                        break;
+                                    }
                                     if (character.Health < 1)
                                     {
                                         Console.Clear();
@@ -1058,13 +1058,10 @@ namespace ConsoleApp1
                                 if (bttlactn == "3")
                                 {
                                         fairwin = false;
-                                        goto Ldywin;
-                                  
                                 }
                             }
                         }
                     }
-                    Ldywin:;
                     Console.Clear();
                     Console.ResetColor();
                     if (fairwin == false)
